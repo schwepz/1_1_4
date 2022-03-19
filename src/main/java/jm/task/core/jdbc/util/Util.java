@@ -13,10 +13,13 @@ import java.util.Properties;
 public class Util {
     private static Connection conn = null;
     private static Util instance = null;
+    private static String root = "root";
+    private static String pass = "Ah1fl8NqN%muiip";
+    private static String url = "jdbc:mysql://localhost/lolkek";
 
     private Util() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/users", "root", "Ah1fl8NqN%muiip") ;
+            conn = DriverManager.getConnection(url, root, pass ) ;
         } catch (SQLException  e) {
             e.printStackTrace();
         }

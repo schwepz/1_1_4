@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static org.hibernate.cfg.AvailableSettings.PASS;
+
 
 public class Util {
     private static Connection conn = null;
@@ -23,7 +23,7 @@ public class Util {
     private static SessionFactory sessionFactory = null;
     private static String root = "root";
     private static String pass = "Ah1fl8NqN%muiip";
-    private static String url = "jdbc:mysql://localhost/lolkek?serverTimezone=Europe/Moscow&useSSL=false";
+    private static String url = "jdbc:mysql://localhost/lolkek?useSSL=false";
     private static String driver = "com.mysql.cj.jdbc.Driver";
 
     private Util() {
@@ -40,6 +40,7 @@ public class Util {
         }
         return instance;
     }
+
 
     public Connection getConnection() {        Connection connection = null;
         try {
@@ -62,20 +63,27 @@ public class Util {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                Configuration configuration = new Configuration();
 
-                // Hibernate settings equivalent to hibernate.cfg.xml's properties
+                Configuration configuration = new Configuration();
                 Properties settings = new Properties();
-                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+
+                settings.put(Environment.DRIVER, driver);
                 settings.put(Environment.URL, url);
                 settings.put(Environment.USER, root);
                 settings.put(Environment.PASS, pass);
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+
                 settings.put(Environment.SHOW_SQL, "true");
+
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+
                 settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+
                 configuration.setProperties(settings);
+
                 configuration.addAnnotatedClass(User.class);
+
+
 
                 sessionFactory = configuration.buildSessionFactory(new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build());

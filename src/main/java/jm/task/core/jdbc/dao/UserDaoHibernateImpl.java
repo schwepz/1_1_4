@@ -82,6 +82,7 @@ public class UserDaoHibernateImpl implements UserDao {
         transaction = session.beginTransaction();
         session.createSQLQuery("TRUNCATE TABLE user").executeUpdate();
         transaction.commit();
+
         session.close();
     }
 

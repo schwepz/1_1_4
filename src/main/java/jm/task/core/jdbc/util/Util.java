@@ -33,6 +33,17 @@ public class Util {
             e.printStackTrace();
         }
     }
+    public static Util getInstance() {
+        if (null == instance) {
+            instance = new Util();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return conn;
+    }
+
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {

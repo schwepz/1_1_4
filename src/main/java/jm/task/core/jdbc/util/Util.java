@@ -34,32 +34,6 @@ public class Util {
         }
     }
 
-    public static Util getInstance() {
-        if (null == instance) {
-            instance = new Util();
-        }
-        return instance;
-    }
-
-
-    public Connection getConnection() {        Connection connection = null;
-        try {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(url, root, pass);
-        }
-        catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Failed to load driver");
-            e.printStackTrace();
-        }
-
-        if (conn != null) {
-            System.out.println("Connection successfully");
-        } else {
-            System.out.println("Failed to make connect");
-        }
-        return conn;
-    }
-
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {

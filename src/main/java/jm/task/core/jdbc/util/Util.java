@@ -72,6 +72,7 @@ public class Util {
 
                 sessionFactory = configuration.buildSessionFactory(new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build());
+
             } catch (Exception e) {
 
                 e.printStackTrace();

@@ -15,7 +15,7 @@ public class Main {
     private final static UserService userService = new UserServiceImpl();
     private final static UserDao userDao = new UserDaoHibernateImpl();
     public static void main(String[] args) {
-    userService.createUsersTable();
+//        userService.createUsersTable();
 //
 //        userService.saveUser("Кирилл", "Курскеев", (byte) 25);
 //        userService.saveUser("Не Кирилл", "Борисович", (byte) 10);
